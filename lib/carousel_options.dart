@@ -115,6 +115,44 @@ class CarouselOptions {
   /// Whether or not to disable the `Center` widget for each slide.
   final bool disableCenter;
 
+  /// Called when a pointer has contacted the screen and has begun to move.
+  ///
+  /// The `details` object provides the position of the touch when it first
+  /// touched the surface.
+  ///
+  /// See [DragGestureRecognizer.onStart].
+  final GestureDragStartCallback onDragStart;
+
+  /// Called when a pointer that is in contact with the screen and moving
+  /// has moved again.
+  ///
+  /// The `details` object provides the position of the touch and the distance it
+  /// has traveled since the last update.
+  ///
+  /// See [DragGestureRecognizer.onUpdate].
+  final GestureDragUpdateCallback onDragUpdate;
+
+  /// Called when a pointer has contacted the screen and might begin to
+  /// move.
+  ///
+  /// The `details` object provides the position of the touch.
+  ///
+  /// See [DragGestureRecognizer.onDown].
+  final GestureDragDownCallback onDragDown;
+
+  /// Called when a pointer that was previously in contact with the screen
+  /// and moving is no longer in contact with the screen.
+  ///
+  /// The velocity at which the pointer was moving when it stopped contacting
+  /// the screen is available in the `details`.
+  final GestureDragEndCallback onDragEnd;
+
+  /// Called when the pointer that previously triggered a
+  /// [GestureDragDownCallback] did not complete.
+  ///
+  /// Used by [DragGestureRecognizer.onCancel].
+  final GestureDragCancelCallback onDragCancel;
+
   CarouselOptions({
     this.height,
     this.aspectRatio: 16 / 9,
@@ -138,5 +176,10 @@ class CarouselOptions {
     this.pageViewKey,
     this.enlargeStrategy: CenterPageEnlargeStrategy.scale,
     this.disableCenter: false,
+    this.onDragStart,
+    this.onDragDown,
+    this.onDragUpdate,
+    this.onDragEnd,
+    this.onDragCancel,
   });
 }
